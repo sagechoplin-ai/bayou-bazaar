@@ -1,0 +1,54 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import ProductGrid from '../../components/ProductGrid.astro';
+import { getProducts } from '../../lib/api';
+
+const products = await getProducts();
+
+const categories = [
+  { slug: '', label: 'All Products', icon: '⚜️' },
+  { slug: 'fishing-lures', label: 'Fishing Lures', icon: '🎣' },
+  { slug: 'bracelets', label: 'Bracelets', icon: '📿' },
+  { slug: 'openclaw', label: 'OpenClaw', icon: '🤖' },
+];
+---
+
+<BaseLayout title="Shop">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-12">
+    <!-- Header -->
+    <div class="mb-8 sm:mb-12">
+      <h1 class="font-heading text-3xl sm:text-4xl md:text-5xl font-bold text-white mb-3">
+        The <span class="text-gold italic">Bazaar</span>
+      </h1>
+      <p class="text-gray-400 text-sm sm:text-base max-w-xl">
+        Browse our full collection of bayou-crafted goods. Every item shipped with Louisiana love.
+      </p>
+    </div>
+
+    <!-- Category Tabs -->
+    <div class="flex flex-wrap gap-2 sm:gap-3 mb-8 sm:mb-10">
+      {categories.map(cat => (
+        <a
+          href={cat.slug ? `/shop/${cat.slug}` : '/shop'}
+          class:list={[
+            'inline-flex items-center gap-1.5 px-4 py-2 rounded-full text-xs sm:text-sm font-medium transition-all duration-300 border',
+            !cat.slug
+              ? 'bg-gold text-bayou-black border-gold'
+              : 'bg-transparent text-gray-300 border-bayou-border hover:border-gold/50 hover:text-gold'
+          ]}
+        >
+          <span>{cat.icon}</span>
+          <span>{cat.label}</span>
+        </a>
+      ))}
+    </div>
+
+    <!-- Products Count -->
+    <div class="flex items-center justify-between mb-6">
+      <p class="text-gray-400 text-sm">{products.length} product{products.length !== 1 ? 's' : ''}</p>
+    </div>
+
+    <!-- Product Grid -->
+    <ProductGrid products={products} columns={4} />
+  </div>
+</BaseLayout>

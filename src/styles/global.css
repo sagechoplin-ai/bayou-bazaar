@@ -1,0 +1,51 @@
+@import "tailwindcss";
+
+@theme {
+  --color-bayou-black: #0a0a0a;
+  --color-bayou-dark: #111111;
+  --color-bayou-card: #1a1a1a;
+  --color-bayou-border: #2a2a2a;
+  --color-gold: #d4a843;
+  --color-gold-light: #e8c76a;
+  --color-gold-dark: #b08a2e;
+  --color-swamp: #2d4a2d;
+  --color-moss: #4a6741;
+  --color-rust: #8b4513;
+  --font-heading: 'Playfair Display', serif;
+  --font-body: 'Inter', sans-serif;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--font-body);
+  background-color: var(--color-bayou-black);
+  color: #e5e5e5;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-heading);
+}
+
+/* Animations */
+@keyframes fade-up {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.animate-fade-up {
+  animation: fade-up 0.6s ease-out forwards;
+}
+
+.animate-fade-up-delay {
+  animation: fade-up 0.6s ease-out 0.2s forwards;
+  opacity: 0;
+}
+
+/* Scrollbar */
+::-webkit-scrollbar { width: 8px; }
+::-webkit-scrollbar-track { background: #0a0a0a; }
+::-webkit-scrollbar-thumb { background: #333; border-radius: 4px; }
+::-webkit-scrollbar-thumb:hover { background: #d4a843; }

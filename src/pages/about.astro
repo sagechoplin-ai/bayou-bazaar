@@ -1,0 +1,101 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+
+<BaseLayout title="About">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-12">
+    <!-- Hero -->
+    <div class="max-w-3xl mb-16 sm:mb-24">
+      <h1 class="font-heading text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6 leading-tight">
+        Born in the <span class="text-gold italic">Bayou</span>,<br />
+        Built for the World
+      </h1>
+      <p class="text-gray-300 text-base sm:text-lg leading-relaxed">
+        Bayou Bazaar started with a simple idea: the craftsmanship, ingenuity, and spirit of Louisiana
+        deserve a place on the modern web. We're not just another online store — we're a bridge between
+        bayou tradition and digital innovation.
+      </p>
+    </div>
+
+    <!-- Story Sections -->
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 mb-16 sm:mb-24">
+      <div>
+        <div class="text-4xl mb-4">🎣</div>
+        <h2 class="font-heading text-xl sm:text-2xl font-bold text-white mb-4">The Lure of Louisiana</h2>
+        <p class="text-gray-400 leading-relaxed mb-4">
+          Our fishing lures aren't mass-produced in some overseas factory. Each one is hand-tied by
+          local craftspeople who've spent decades perfecting their art on the banks of the Atchafalaya.
+          They know what works because they fish these waters every single day.
+        </p>
+        <p class="text-gray-400 leading-relaxed">
+          From the hammered gold blades of our Bayou Bandit Spinnerbait to the hand-painted crawfish
+          patterns on our crankbaits, every lure tells a story of Louisiana's fishing heritage.
+        </p>
+      </div>
+
+      <div>
+        <div class="text-4xl mb-4">📿</div>
+        <h2 class="font-heading text-xl sm:text-2xl font-bold text-white mb-4">Woven by Hand, Worn with Pride</h2>
+        <p class="text-gray-400 leading-relaxed mb-4">
+          Our bracelets are more than accessories — they're wearable art inspired by Louisiana's
+          rich cultural tapestry. Each piece draws from Cajun patterns, Mardi Gras traditions, and
+          the natural beauty of the bayou landscape.
+        </p>
+        <p class="text-gray-400 leading-relaxed">
+          Local artisans weave, bead, and clasp every bracelet by hand, using materials sourced
+          from the Gulf Coast region. No two pieces are exactly alike, just like the bayou itself.
+        </p>
+      </div>
+    </div>
+
+    <div class="bg-bayou-card border border-bayou-border rounded-2xl p-8 sm:p-12 mb-16 sm:mb-24">
+      <div class="max-w-3xl mx-auto text-center">
+        <div class="text-4xl mb-4">🤖</div>
+        <h2 class="font-heading text-xl sm:text-2xl md:text-3xl font-bold text-white mb-4">OpenClaw: AI Meets the Bayou</h2>
+        <p class="text-gray-400 leading-relaxed mb-4">
+          In 2024, we expanded beyond physical goods into the digital frontier. OpenClaw AI Installs
+          bring enterprise-grade artificial intelligence to businesses of all sizes. Our team of AI
+          engineers — many of whom cut their teeth at Louisiana's growing tech hubs — deliver
+          professional installations that just work.
+        </p>
+        <p class="text-gray-400 leading-relaxed">
+          From custom chatbots to full autonomous agent setups, OpenClaw represents the future of
+          Bayou Bazaar: rooted in Louisiana values of reliability and craftsmanship, powered by
+          cutting-edge technology.
+        </p>
+      </div>
+    </div>
+
+    <!-- Values -->
+    <div class="mb-16 sm:mb-24">
+      <h2 class="font-heading text-2xl sm:text-3xl md:text-4xl font-bold text-white text-center mb-12">Our Values</h2>
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
+        {[
+          { icon: '⚜️', title: 'Authenticity', desc: 'Every product is genuinely crafted or curated. No shortcuts, no compromises.' },
+          { icon: '🌿', title: 'Sustainability', desc: 'We source responsibly, minimize waste, and give back to the bayou ecosystem that inspires us.' },
+          { icon: '🤝', title: 'Community', desc: 'We employ local artisans, support Louisiana businesses, and invest in our community.' },
+          { icon: '💡', title: 'Innovation', desc: 'From hand-tied lures to AI installs, we blend tradition with forward-thinking solutions.' },
+          { icon: '📦', title: 'Quality', desc: 'Every item is inspected, tested, and shipped with care. If it\'s not bayou-grade, it doesn\'t ship.' },
+          { icon: '❤️', title: 'Passion', desc: 'We love what we do. That passion shows in every product, every page, every interaction.' },
+        ].map(v => (
+          <div class="bg-bayou-card border border-bayou-border rounded-xl p-6 hover:border-gold/30 transition-colors">
+            <span class="text-2xl mb-3 block">{v.icon}</span>
+            <h3 class="font-heading text-white font-semibold mb-2">{v.title}</h3>
+            <p class="text-gray-400 text-sm leading-relaxed">{v.desc}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+
+    <!-- CTA -->
+    <div class="text-center">
+      <h2 class="font-heading text-2xl sm:text-3xl font-bold text-white mb-4">Ready to Shop?</h2>
+      <p class="text-gray-400 mb-8 max-w-xl mx-auto">
+        Explore our collection of Louisiana-crafted goods and cutting-edge AI services.
+      </p>
+      <a href="/shop" class="inline-flex items-center px-8 py-3.5 bg-gold text-bayou-black font-semibold rounded-lg hover:bg-gold-light transition-all duration-300 hover:shadow-lg hover:shadow-gold/20">
+        Browse the Bazaar
+      </a>
+    </div>
+  </div>
+</BaseLayout>

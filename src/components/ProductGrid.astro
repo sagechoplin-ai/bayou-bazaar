@@ -1,0 +1,28 @@
+---
+import type { Product } from '../lib/api';
+import ProductCard from './ProductCard.astro';
+
+interface Props {
+  products: Product[];
+  columns?: 3 | 4;
+}
+
+const { products, columns = 3 } = Astro.props;
+const gridClass = columns === 4
+  ? 'grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 sm:gap-6'
+  : 'grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6';
+---
+
+{products.length > 0 ? (
+  <div class={gridClass}>
+    {products.map(product => (
+      <ProductCard product={product} />
+    ))}
+  </div>
+) : (
+  <div class="text-center py-16">
+    <span class="text-4xl mb-4 block">🦐</span>
+    <p class="text-gray-400 text-lg">No products found in this bayou...</p>
+    <a href="/shop" class="inline-block mt-4 text-gold hover:text-gold-light transition-colors text-sm">← Browse all products</a>
+  </div>
+)}

@@ -1,0 +1,109 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import ProductCard from '../components/ProductCard.astro';
+import { getProducts, getCategoryLabel } from '../lib/api';
+
+const products = await getProducts();
+const featured = products.slice(0, 6);
+
+const categories = [
+  { slug: 'fishing-lures', icon: '🎣', label: 'Fishing Lures', desc: 'Hand-tied lures built for bayou bass, redfish, and everything in between.' },
+  { slug: 'bracelets', icon: '📿', label: 'Handmade Bracelets', desc: 'Louisiana-inspired woven and beaded bracelets, each one unique.' },
+  { slug: 'openclaw', icon: '🤖', label: 'OpenClaw AI Installs', desc: 'Professional AI agent installations — automation meets the bayou.' },
+];
+---
+
+<BaseLayout title="Home">
+  <!-- Hero -->
+  <section class="relative overflow-hidden">
+    <div class="absolute inset-0 bg-gradient-to-br from-bayou-black via-bayou-dark to-swamp/20"></div>
+    <div class="absolute inset-0 opacity-10" style="background-image: radial-gradient(circle at 20% 50%, rgba(212,168,67,0.3) 0%, transparent 50%), radial-gradient(circle at 80% 20%, rgba(212,168,67,0.15) 0%, transparent 50%);"></div>
+
+    <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 sm:py-28 lg:py-36">
+      <div class="max-w-3xl">
+        <div class="inline-flex items-center gap-2 px-4 py-1.5 bg-gold/10 border border-gold/20 rounded-full text-gold text-xs sm:text-sm font-medium mb-6 animate-fade-up">
+          <span>⚜️</span>
+          <span>Straight from the Louisiana Bayou</span>
+        </div>
+
+        <h1 class="font-heading text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-white leading-[1.1] mb-6 animate-fade-up">
+          Where the Bayou<br/>
+          <span class="text-gold italic">Meets the Browser</span>
+        </h1>
+
+        <p class="text-gray-300 text-base sm:text-lg md:text-xl max-w-2xl mb-8 leading-relaxed animate-fade-up-delay">
+          Hand-tied fishing lures, artisan bracelets, and cutting-edge AI installs — all born from bayou ingenuity. Welcome to Bayou Bazaar.
+        </p>
+
+        <div class="flex flex-col sm:flex-row gap-4 animate-fade-up-delay">
+          <a href="/shop" class="inline-flex items-center justify-center px-8 py-3.5 bg-gold text-bayou-black font-semibold rounded-lg hover:bg-gold-light transition-all duration-300 hover:shadow-lg hover:shadow-gold/20 text-sm sm:text-base">
+            Shop Now
+            <svg class="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" /></svg>
+          </a>
+          <a href="/about" class="inline-flex items-center justify-center px-8 py-3.5 border border-gray-600 text-white rounded-lg hover:border-gold hover:text-gold transition-all duration-300 text-sm sm:text-base">
+            Our Story
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Decorative bottom -->
+    <div class="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-gold/30 to-transparent"></div>
+  </section>
+
+  <!-- Categories -->
+  <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 sm:py-24">
+    <div class="text-center mb-12">
+      <h2 class="font-heading text-2xl sm:text-3xl md:text-4xl font-bold text-white mb-3">Shop by Category</h2>
+      <p class="text-gray-400 text-sm sm:text-base max-w-xl mx-auto">Three worlds, one bazaar. Find exactly what you need.</p>
+    </div>
+
+    <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 sm:gap-6">
+      {categories.map(cat => (
+        <a href={`/shop/${cat.slug}`} class="group relative bg-bayou-card border border-bayou-border rounded-xl p-6 sm:p-8 transition-all duration-300 hover:border-gold/40 hover:shadow-lg hover:shadow-gold/5 hover:-translate-y-1 overflow-hidden">
+          <div class="absolute top-0 right-0 text-[80px] sm:text-[100px] opacity-5 group-hover:opacity-10 transition-opacity -mr-4 -mt-4 select-none">{cat.icon}</div>
+          <span class="text-3xl sm:text-4xl mb-4 block">{cat.icon}</span>
+          <h3 class="font-heading text-white text-lg sm:text-xl font-semibold mb-2 group-hover:text-gold transition-colors">{cat.label}</h3>
+          <p class="text-gray-400 text-sm leading-relaxed">{cat.desc}</p>
+          <span class="inline-flex items-center mt-4 text-gold text-sm font-medium opacity-0 group-hover:opacity-100 transition-opacity">
+            Browse {cat.label} →
+          </span>
+        </a>
+      ))}
+    </div>
+  </section>
+
+  <!-- Featured Products -->
+  <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-16 sm:pb-24">
+    <div class="flex flex-col sm:flex-row items-start sm:items-center justify-between mb-10 gap-4">
+      <div>
+        <h2 class="font-heading text-2xl sm:text-3xl md:text-4xl font-bold text-white mb-2">Featured Products</h2>
+        <p class="text-gray-400 text-sm sm:text-base">Our most popular picks from the bayou.</p>
+      </div>
+      <a href="/shop" class="text-gold hover:text-gold-light text-sm font-medium transition-colors whitespace-nowrap">
+        View All Products →
+      </a>
+    </div>
+
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
+      {featured.map(product => (
+        <ProductCard product={product} />
+      ))}
+    </div>
+  </section>
+
+  <!-- CTA Banner -->
+  <section class="bg-gradient-to-r from-bayou-dark via-bayou-card to-bayou-dark border-y border-bayou-border">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 sm:py-20 text-center">
+      <h2 class="font-heading text-2xl sm:text-3xl md:text-4xl font-bold text-white mb-4">
+        Ready to Explore the Bayou?
+      </h2>
+      <p class="text-gray-400 text-sm sm:text-base max-w-xl mx-auto mb-8">
+        From handcrafted lures to AI-powered installs, every product tells a Louisiana story.
+      </p>
+      <a href="/shop" class="inline-flex items-center px-8 py-3.5 bg-gold text-bayou-black font-semibold rounded-lg hover:bg-gold-light transition-all duration-300 hover:shadow-lg hover:shadow-gold/20">
+        Browse the Full Collection
+      </a>
+    </div>
+  </section>
+</BaseLayout>
