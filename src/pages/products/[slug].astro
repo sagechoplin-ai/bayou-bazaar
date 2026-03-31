@@ -3,6 +3,11 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
 import ProductCard from '../../components/ProductCard.astro';
 import { getProduct, getProducts, formatPrice, getCategoryLabel, getCategoryIcon, getBadgeColor, getBadgeLabel } from '../../lib/api';
 
+export async function getStaticPaths() {
+  const products = await getProducts();
+  return products.map(p => ({ params: { slug: p.slug } }));
+}
+
 const { slug } = Astro.params;
 const product = await getProduct(slug!);
 

@@ -19,13 +19,14 @@ export interface Product {
 
 export async function getProducts(category?: string): Promise<Product[]> {
   try {
-    const url = category
-      ? `${API}/pages?type=product&fields.category=${category}`
-      : `${API}/pages?type=product`;
-    const res = await fetch(url);
+    const res = await fetch(`${API}/pages?type=product&limit=100`);
     if (!res.ok) return [];
     const json = await res.json();
-    return json.data || [];
+    const all: Product[] = json.data || [];
+    if (category) {
+      return all.filter(p => p.fields.category === category);
+    }
+    return all;
   } catch {
     return [];
   }

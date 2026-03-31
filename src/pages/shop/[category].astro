@@ -3,13 +3,15 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
 import ProductGrid from '../../components/ProductGrid.astro';
 import { getProducts, getCategoryLabel } from '../../lib/api';
 
-const { category } = Astro.params;
-const validCategories = ['fishing-lures', 'bracelets', 'openclaw'];
-
-if (!category || !validCategories.includes(category)) {
-  return Astro.redirect('/shop');
+export async function getStaticPaths() {
+  return [
+    { params: { category: 'fishing-lures' } },
+    { params: { category: 'bracelets' } },
+    { params: { category: 'openclaw' } },
+  ];
 }
 
+const { category } = Astro.params;
 const products = await getProducts(category);
 const categoryLabel = getCategoryLabel(category);
 
