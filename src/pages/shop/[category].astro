@@ -5,9 +5,10 @@ import { getProducts, getCategoryLabel } from '../../lib/api';
 
 export async function getStaticPaths() {
   return [
-    { params: { category: 'fishing-lures' } },
-    { params: { category: 'bracelets' } },
-    { params: { category: 'openclaw' } },
+    { params: { category: 'jar-candles' } },
+    { params: { category: 'pillar-candles' } },
+    { params: { category: 'taper-candles' } },
+    { params: { category: 'wax-melts' } },
   ];
 }
 
@@ -16,16 +17,18 @@ const products = await getProducts(category);
 const categoryLabel = getCategoryLabel(category);
 
 const categories = [
-  { slug: '', label: 'All Products', icon: '⚜️' },
-  { slug: 'fishing-lures', label: 'Fishing Lures', icon: '🎣' },
-  { slug: 'bracelets', label: 'Bracelets', icon: '📿' },
-  { slug: 'openclaw', label: 'OpenClaw', icon: '🤖' },
+  { slug: '', label: 'All Products', icon: '🕯️' },
+  { slug: 'jar-candles', label: 'Jar Candles', icon: '🕯️' },
+  { slug: 'pillar-candles', label: 'Pillar Candles', icon: '🏛️' },
+  { slug: 'taper-candles', label: 'Taper Candles', icon: '✨' },
+  { slug: 'wax-melts', label: 'Wax Melts', icon: '🌸' },
 ];
 
 const categoryDescriptions: Record<string, string> = {
-  'fishing-lures': 'Hand-tied, bayou-tested lures designed to land the big one. Each lure is crafted with local materials and decades of Louisiana fishing wisdom.',
-  'bracelets': 'Handwoven and beaded bracelets inspired by Louisiana culture — from Mardi Gras colors to bayou earth tones.',
-  'openclaw': 'Professional AI agent installations powered by OpenClaw. Bring automation to your business with bayou-grade reliability.',
+  'jar-candles': 'Soy and blended jar candles in signature bayou-inspired scents. Hand-poured in small batches with natural wicks for a clean 40-60 hour burn.',
+  'pillar-candles': 'Handcrafted beeswax pillars that burn beautifully and fill any room with fragrance. Tall, elegant, and long-lasting.',
+  'taper-candles': 'Hand-dipped beeswax tapers, sold in sets of 4. Perfect for dining tables, candleholders, and special occasions.',
+  'wax-melts': 'Fragrance-packed wax melt cubes for your warmer. Strong throw, long-lasting scent — no wick required.',
 };
 ---
 

@@ -7,9 +7,10 @@ const products = await getProducts();
 const featured = products.slice(0, 6);
 
 const categories = [
-  { slug: 'fishing-lures', icon: '🎣', label: 'Fishing Lures', desc: 'Hand-tied lures built for bayou bass, redfish, and everything in between.' },
-  { slug: 'bracelets', icon: '📿', label: 'Handmade Bracelets', desc: 'Louisiana-inspired woven and beaded bracelets, each one unique.' },
-  { slug: 'openclaw', icon: '🤖', label: 'OpenClaw AI Installs', desc: 'Professional AI agent installations — automation meets the bayou.' },
+  { slug: 'jar-candles', icon: '🕯️', label: 'Jar Candles', desc: 'Soy and blended jar candles in signature bayou-inspired scents. 40-60 hour burn time.' },
+  { slug: 'pillar-candles', icon: '🏛️', label: 'Pillar Candles', desc: 'Handcrafted beeswax pillars that burn beautifully and fill any room with fragrance.' },
+  { slug: 'taper-candles', icon: '✨', label: 'Taper Candles', desc: 'Hand-dipped beeswax tapers, sold in sets. Perfect for dining tables and special occasions.' },
+  { slug: 'wax-melts', icon: '🌸', label: 'Wax Melts', desc: 'Fragrance-packed wax melt cubes for your warmer. Strong throw, long-lasting scent.' },
 ];
 ---
 
@@ -22,17 +23,17 @@ const categories = [
     <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 sm:py-28 lg:py-36">
       <div class="max-w-3xl">
         <div class="inline-flex items-center gap-2 px-4 py-1.5 bg-gold/10 border border-gold/20 rounded-full text-gold text-xs sm:text-sm font-medium mb-6 animate-fade-up">
-          <span>⚜️</span>
-          <span>Straight from the Louisiana Bayou</span>
+          <span>🕯️</span>
+          <span>Small-Batch & Handmade</span>
         </div>
 
         <h1 class="font-heading text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-white leading-[1.1] mb-6 animate-fade-up">
-          Where the Bayou<br/>
-          <span class="text-gold italic">Meets the Browser</span>
+          Handpoured with Love,<br/>
+          <span class="text-gold italic">Lit by Bayou</span>
         </h1>
 
         <p class="text-gray-300 text-base sm:text-lg md:text-xl max-w-2xl mb-8 leading-relaxed animate-fade-up-delay">
-          Hand-tied fishing lures, artisan bracelets, and cutting-edge AI installs — all born from bayou ingenuity. Welcome to Bayou Bazaar.
+          Small-batch soy, beeswax, and blended candles made right here in South Louisiana. Each one poured by hand, scented with care.
         </p>
 
         <div class="flex flex-col sm:flex-row gap-4 animate-fade-up-delay">
@@ -55,10 +56,10 @@ const categories = [
   <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 sm:py-24">
     <div class="text-center mb-12">
       <h2 class="font-heading text-2xl sm:text-3xl md:text-4xl font-bold text-white mb-3">Shop by Category</h2>
-      <p class="text-gray-400 text-sm sm:text-base max-w-xl mx-auto">Three worlds, one bazaar. Find exactly what you need.</p>
+      <p class="text-gray-400 text-sm sm:text-base max-w-xl mx-auto">Four collections, one passion. Find your perfect scent.</p>
     </div>
 
-    <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 sm:gap-6">
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
       {categories.map(cat => (
         <a href={`/shop/${cat.slug}`} class="group relative bg-bayou-card border border-bayou-border rounded-xl p-6 sm:p-8 transition-all duration-300 hover:border-gold/40 hover:shadow-lg hover:shadow-gold/5 hover:-translate-y-1 overflow-hidden">
           <div class="absolute top-0 right-0 text-[80px] sm:text-[100px] opacity-5 group-hover:opacity-10 transition-opacity -mr-4 -mt-4 select-none">{cat.icon}</div>
@@ -78,7 +79,7 @@ const categories = [
     <div class="flex flex-col sm:flex-row items-start sm:items-center justify-between mb-10 gap-4">
       <div>
         <h2 class="font-heading text-2xl sm:text-3xl md:text-4xl font-bold text-white mb-2">Featured Products</h2>
-        <p class="text-gray-400 text-sm sm:text-base">Our most popular picks from the bayou.</p>
+        <p class="text-gray-400 text-sm sm:text-base">Our most-loved scents, poured fresh.</p>
       </div>
       <a href="/shop" class="text-gold hover:text-gold-light text-sm font-medium transition-colors whitespace-nowrap">
         View All Products →
@@ -96,10 +97,10 @@ const categories = [
   <section class="bg-gradient-to-r from-bayou-dark via-bayou-card to-bayou-dark border-y border-bayou-border">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 sm:py-20 text-center">
       <h2 class="font-heading text-2xl sm:text-3xl md:text-4xl font-bold text-white mb-4">
-        Ready to Explore the Bayou?
+        Ready to Fill Your Home with Scent?
       </h2>
       <p class="text-gray-400 text-sm sm:text-base max-w-xl mx-auto mb-8">
-        From handcrafted lures to AI-powered installs, every product tells a Louisiana story.
+        Every candle is poured by hand in small batches using quality wax and fragrance oils. Ships in 3-5 days.
       </p>
       <a href="/shop" class="inline-flex items-center px-8 py-3.5 bg-gold text-bayou-black font-semibold rounded-lg hover:bg-gold-light transition-all duration-300 hover:shadow-lg hover:shadow-gold/20">
         Browse the Full Collection

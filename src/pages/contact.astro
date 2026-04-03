@@ -19,7 +19,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
       <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 sm:gap-6 mb-12 sm:mb-16">
         {[
           { icon: '📧', label: 'Email', value: 'hello@bayoubazaar.com' },
-          { icon: '📍', label: 'Location', value: 'Lafayette, Louisiana' },
+          { icon: '📍', label: 'Location', value: 'Online Only' },
           { icon: '⏰', label: 'Hours', value: 'Mon–Fri, 9am–5pm CST' },
         ].map(info => (
           <div class="bg-bayou-card border border-bayou-border rounded-xl p-5 text-center hover:border-gold/30 transition-colors">
@@ -69,9 +69,9 @@ import BaseLayout from '../layouts/BaseLayout.astro';
             >
               <option value="general">General Inquiry</option>
               <option value="product">Product Question</option>
-              <option value="custom">Custom Order</option>
+              <option value="custom">Custom Order / Gift Set</option>
               <option value="wholesale">Wholesale / Partnership</option>
-              <option value="openclaw">OpenClaw AI Services</option>
+              <option value="shipping">Shipping & Delivery</option>
               <option value="support">Support</option>
             </select>
           </div>

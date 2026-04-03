@@ -13,10 +13,10 @@ const currentPath = Astro.url.pathname;
     <div class="flex items-center justify-between h-16 sm:h-20">
       <!-- Logo -->
       <a href="/" class="flex items-center gap-2 group">
-        <span class="text-2xl sm:text-3xl">⚜️</span>
+        <span class="text-2xl sm:text-3xl">🕯️</span>
         <div class="flex flex-col leading-tight">
           <span class="font-heading text-gold text-lg sm:text-xl font-bold tracking-wide group-hover:text-gold-light transition-colors">Bayou Bazaar</span>
-          <span class="text-[10px] sm:text-xs text-gray-500 uppercase tracking-[0.2em]">Louisiana Goods</span>
+          <span class="text-[10px] sm:text-xs text-gray-500 uppercase tracking-[0.2em]">Handmade Candles & Scents</span>
         </div>
       </a>
 
@@ -39,12 +39,12 @@ const currentPath = Astro.url.pathname;
 
       <!-- Cart + Mobile Toggle -->
       <div class="flex items-center gap-4">
-        <button class="relative p-2 text-gray-300 hover:text-gold transition-colors" aria-label="Cart">
+        <a href="/cart" class="relative p-2 text-gray-300 hover:text-gold transition-colors" aria-label="Cart">
           <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z" />
           </svg>
-          <span class="absolute -top-1 -right-1 w-5 h-5 bg-gold text-bayou-black text-xs font-bold rounded-full flex items-center justify-center">0</span>
-        </button>
+          <span data-cart-count class="absolute -top-1 -right-1 w-5 h-5 bg-gold text-bayou-black text-xs font-bold rounded-full flex items-center justify-center" style="display:none;">0</span>
+        </a>
 
         <!-- Mobile menu button -->
         <button

@@ -49,20 +49,22 @@ export function formatPrice(price: number): string {
 
 export function getCategoryLabel(cat: string): string {
   const map: Record<string, string> = {
-    'fishing-lures': '🎣 Fishing Lures',
-    'bracelets': '📿 Bracelets',
-    'openclaw': '🤖 OpenClaw Installs',
+    'jar-candles': '🕯️ Jar Candles',
+    'pillar-candles': '🕯️ Pillar Candles',
+    'taper-candles': '🕯️ Taper Candles',
+    'wax-melts': '✨ Wax Melts',
   };
   return map[cat] || cat;
 }
 
 export function getCategoryIcon(cat: string): string {
   const map: Record<string, string> = {
-    'fishing-lures': '🎣',
-    'bracelets': '📿',
-    'openclaw': '🤖',
+    'jar-candles': '🕯️',
+    'pillar-candles': '🕯️',
+    'taper-candles': '🕯️',
+    'wax-melts': '✨',
   };
-  return map[cat] || '📦';
+  return map[cat] || '🕯️';
 }
 
 export function getBadgeColor(badge: string): string {
