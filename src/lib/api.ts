@@ -14,6 +14,7 @@ export interface Product {
     badge?: string;
     in_stock: boolean;
     sku: string;
+    image?: string;
   };
 }
 

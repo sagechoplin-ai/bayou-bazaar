@@ -16,7 +16,7 @@ if (!product) {
 }
 
 const { title, fields } = product;
-const { price, compare_price, category, short_description, badge, in_stock, sku } = fields;
+const { price, compare_price, category, short_description, badge, in_stock, sku, image } = fields;
 const isOnSale = compare_price && compare_price > price;
 const discount = isOnSale ? Math.round((1 - price / compare_price!) * 100) : 0;
 
@@ -42,7 +42,11 @@ const related = allProducts.filter((p: any) => p.slug !== slug).slice(0, 3);
     <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-16 mb-16 sm:mb-24">
       <!-- Image -->
       <div class="relative aspect-square bg-bayou-card border border-bayou-border rounded-2xl flex items-center justify-center overflow-hidden">
-        <span class="text-[120px] sm:text-[160px] opacity-20">{getCategoryIcon(category)}</span>
+        {image ? (
+          <img src={image} alt={title} class="absolute inset-0 w-full h-full object-cover" />
+        ) : (
+          <span class="text-[120px] sm:text-[160px] opacity-20">{getCategoryIcon(category)}</span>
+        )}
 
         {badge && (
           <span class:list={[

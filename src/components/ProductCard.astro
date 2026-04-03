@@ -8,18 +8,27 @@ interface Props {
 
 const { product } = Astro.props;
 const { title, slug, fields } = product;
-const { price, compare_price, category, short_description, badge, in_stock } = fields;
+const { price, compare_price, category, short_description, badge, in_stock, image } = fields;
 const isOnSale = compare_price && compare_price > price;
 const discount = isOnSale ? Math.round((1 - price / compare_price!) * 100) : 0;
 ---
 
 <a href={`/products/${slug}`} class="group block">
   <div class="bg-bayou-card border border-bayou-border rounded-xl overflow-hidden transition-all duration-300 hover:border-gold/40 hover:shadow-lg hover:shadow-gold/5 hover:-translate-y-1">
-    <!-- Image placeholder with category-based gradient -->
+    <!-- Product Image -->
     <div class="relative aspect-square bg-gradient-to-br from-bayou-dark to-bayou-card flex items-center justify-center overflow-hidden">
-      <span class="text-6xl sm:text-7xl opacity-30 group-hover:opacity-50 group-hover:scale-110 transition-all duration-500">
-        {getCategoryIcon(category)}
-      </span>
+      {image ? (
+        <img
+          src={image}
+          alt={title}
+          class="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+          loading="lazy"
+        />
+      ) : (
+        <span class="text-6xl sm:text-7xl opacity-30 group-hover:opacity-50 group-hover:scale-110 transition-all duration-500">
+          {getCategoryIcon(category)}
+        </span>
+      )}
 
       <!-- Badge -->
       {badge && (
